@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS File -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/master.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/sign_up_for_prof.css') }}"
+    />
+    <!-- Normalize File -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/normalize.css') }}"
+    />
+    <!-- Tab Icon -->
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='imgs/logo (2).png') }}"
+      type="fci-icon"
+    />
+    <!-- Font Awesome Library -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/all.min.css') }}"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up For Professors</title>
+  </head>
+  <body>
+    <!-- Start Navbar -->
+    <nav>
+      <div class="logo">
+        <a href="{{ url_for('index') }}"
+          ><img
+            src="{{ url_for('static', filename='imgs/logo (2).png') }}"
+            alt=""
+        /></a>
+      </div>
+      <div class="links">
+        <a href="{{ url_for('index') }}" class="home">HOME</a>
+        <a href="{{ url_for('about') }}" class="about">ABOUT</a>
+        <a href="{{ url_for('contact') }}" class="contact">CONTACT</a>
+        <a href="{{ url_for('log_in') }}" class="log-in">LOG IN</a>
+        <a href="{{ url_for('sign_up') }}" class="sign-up">SIGN UP</a>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Start Sign Up for Profs -->
+    <div class="big-sign-up-container">
+      <div class="signup-container">
+        <i class="fa-solid fa-user-tie"></i>
+        <h2>Sign Up for Professors</h2>
+        <form action="{{ url_for('sign_up_for_prof') }}" method="post">
+          <div class="columns">
+            <div class="column">
+              <input
+                type="text"
+                name="first-name"
+                placeholder="First Name"
+                required
+              /><br />
+              <input
+                type="text"
+                name="last-name"
+                placeholder="Last Name"
+                required
+              /><br />
+              <input
+                type="tel"
+                name="contact-number"
+                placeholder="Contact Number"
+                maxlength="11"
+                minlength="11"
+                required
+              /><br />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+              /><br />
+              <!-- <select name="class_level" required>
+                <option value="" disabled selected>Select Class Level</option>
+                <option value="Level 1">Level 1</option>
+                <option value="Level 2">Level 2</option>
+                <option value="Level 3">Level 3</option>
+                <option value="Level 4">Level 4</option></select
+                ><br /> -->
+              <select name="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option></select
+              ><br />
+            </div>
+            <div class="column">
+              <input
+                type="text"
+                name="middle-name"
+                placeholder="Middle Name"
+                required
+              /><br />
+              <input
+                type="tel"
+                name="national-id"
+                placeholder="National ID"
+                maxlength="14"
+                minlength="14"
+                required
+              /><br />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+              /><br />
+              <input
+                type="date"
+                name="date-of-birth"
+                placeholder="Date of Birth"
+                required
+              /><br />
+            </div>
+          </div>
+          <a href="{{ url_for('log_in') }}">Or You Are Already Have Account</a>
+          <input type="submit" value="Sign Up" />
+        </form>
+      </div>
+    </div>
+    <!-- End Sign Up for Profs -->
+
+    <!-- Start Footer -->
+
+    <div class="footer-container">
+      <div class="footer-main-container">
+        <div class="first-column">
+          <a href="{{ url_for('index') }}"
+            ><img
+              src="{{ url_for('static', filename='imgs/logo (2).png') }}"
+              alt=""
+          /></a>
+          <p>
+            Far far away, behind the word mountains, far from the countries
+            Vokalia and Consonantia, there live the blind texts.
+          </p>
+          <div class="social-media-icons">
+            <a href="http://" target="_blank" rel="noopener noreferrer"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="http://" target="_blank" rel="noopener noreferrer"
+              ><i class="fa-brands fa-square-instagram"></i
+            ></a>
+            <a href="http://" target="_blank" rel="noopener noreferrer"
+              ><i class="fa-brands fa-square-x-twitter"></i
+            ></a>
+          </div>
+        </div>
+        <div class="second-column">
+          <h2>Pages</h2>
+          <div class="pages-links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+            <a href="{{ url_for('log_in') }}">Log In</a>
+            <a href="{{ url_for('sign_up') }}">Sign Up</a>
+          </div>
+        </div>
+        <div class="third-column">
+          <h2>Have a Questions?</h2>
+          <div class="address">
+            <i class="fa-solid fa-map"></i>
+            <p>El-Gish Street, Kafr Elsheikh, Arab Republic of Egypt.</p>
+          </div>
+          <div class="phone">
+            <i class="fa-solid fa-phone"></i>
+            <a href="tel:+201096554062">(+2) 01096554062</a>
+          </div>
+          <div class="email">
+            <i class="fa-solid fa-paper-plane"></i>
+            <a href="mailto:info@fci.kfs.edu.eg">info@fci.kfs.edu.eg</a>
+          </div>
+        </div>
+      </div>
+      <div class="sub-container">
+        <p>
+          Copyright ©2023 All rights reserved | This template is made with 🧡 by
+          <span
+            ><a
+              href="https://yousefelbilkasy.bio.link/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Yousef Elbilkasy</a
+            ></span
+          >
+          & <span>Alaa Elhabashy</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- End Footer -->
+  </body>
+</html>

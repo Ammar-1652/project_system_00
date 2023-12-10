@@ -1,0 +1,248 @@
+/* Global Rules */
+:root {
+  --main-color: #ffa62b; /* Primary Color */
+  --second-color: #000000; /* Primary Text */
+  --third-color: #4d4d4d; /* Secondary Text */
+  --forth-color: #161616; /* Footer Color */
+  --fifth-color: #f8f8f8; /* Text / Icons */
+  --sixth-color: #878b8b; /*  */
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--fifth-color);
+  height: 100vh;
+}
+/* Global Rules */
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.assignment {
+  background-color: var(--fifth-color);
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  color: var(--main-color);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top: 3px solid var(--main-color);
+  border-left: 3px solid var(--main-color);
+  border-right: 3px solid var(--main-color);
+  padding: 10px 20px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  background-color: var(--fifth-color);
+}
+
+.welcome-message {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.download-button {
+  display: block;
+  width: 200px;
+  padding: 10px;
+  text-align: center;
+  background-color: var(--main-color);
+  color: var(--fifth-color);
+  text-decoration: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border: none;
+}
+
+.download-button:hover {
+  background-color: #ff8c00;
+}
+
+.warning {
+  color: #ff0000;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.warning-icon::before {
+  content: "\26A0";
+  margin-right: 5px;
+}
+
+.warning-message {
+  margin: 0;
+}
+
+.contact-email a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-email a:hover {
+  color: #0056b3;
+}
+
+/* Start Students Dashboard Structure */
+/* Start First Column */
+
+.big-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.big-container .first-column-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24%;
+  background-color: var(--forth-color);
+  /* background-color: #1d3557; */
+}
+
+.big-container .first-column-container div {
+  margin: 5px;
+}
+
+.big-container .first-column-container div a.assignment-link {
+  padding-left: 15px;
+  background-color: var(--main-color);
+  color: var(--second-color);
+  width: fit-content;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.big-container
+  .first-column-container
+  div
+  a:hover {
+  padding-left: 15px;
+  background-color: var(--main-color);
+  color: var(--second-color);
+  width: fit-content;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.big-container .first-column-container div a {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  color: var(--fifth-color);
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  padding: 10px;
+}
+
+.big-container .first-column-container div a p {
+  width: fit-content;
+  text-align: left;
+  padding-left: 10px;
+  text-transform: capitalize;
+}
+
+.first-column-big-container .first-column-container div a i {
+  font-size: 20px;
+}
+
+/* End First Column */
+
+/* Start Header */
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: calc(100% - 10%);
+  height: fit-content;
+  align-items: center;
+  margin: 15px 0 15px 15px;
+}
+
+.header-container input {
+  padding: 12px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease-in-out;
+  color: #555;
+  font-size: 16px;
+  outline: none;
+}
+
+.header-container input:focus {
+  outline: var(--main-color) 2px solid;
+}
+
+.header-container .header-end-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 25%;
+}
+
+.header-container .header-end-container i {
+  font-size: 25px;
+  background-color: var(--main-color);
+  cursor: pointer;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  color: var(--forth-color);
+  padding: 10px;
+  height: max-content;
+}
+
+.header-container .header-end-container .profile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 62.5%;
+}
+
+.header-container .header-end-container .profile-container h6 {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.header-container .header-end-container .profile-container p {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+/* End Header */
+
+/* Start Content */
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+
+/* End Content */
+
+/* End Students Dashboard Structure */

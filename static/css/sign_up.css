@@ -1,0 +1,84 @@
+/* Global Rules */
+:root {
+  --main-color: #ffa62b; /* Primary Color */
+  --second-color: #000000; /* Primary Text */
+  --third-color: #4d4d4d; /* Secondary Text */
+  --forth-color: #161616; /* Footer Color */
+  --fifth-color: #f8f8f8; /* Text / Icons */
+  --sixth-color: #878b8b; /*  */
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--fifth-color);
+  height: 100vh;
+}
+/* Global Rules */
+
+/* Start Navbar */
+nav .links .sign-up {
+  color: var(--second-color);
+}
+/* End Navbar */
+
+/* Start Sign Up */
+
+.big-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.big-container .container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  background: var(--fifth-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.big-container .container .signup-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.big-container .signup-container a button {
+  cursor: pointer;
+  width: 200px;
+  margin: 30px;
+  padding: 12px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease-in-out;
+  color: #555;
+  font-size: 16px;
+  outline: none;
+}
+
+.big-container .signup-container a button h6 {
+  margin: 0;
+  padding: 5px;
+  padding-top: 15px;
+  font-size: 15px;
+}
+
+.big-container .signup-container a button i {
+  font-size: 30px;
+  color: var(--main-color);
+}
+
+.big-container .container a {
+  color: var(--main-color);
+  font-size: 20px;
+}
+
+/* End Sign Up */

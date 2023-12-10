@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS File -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/master.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+    <!-- Normalize File -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/normalize.css') }}"
+    />
+    <!-- Tab Icon -->
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='imgs/logo (2).png') }}"
+      type="fci-icon"
+    />
+    <!-- Font Awesome Library -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/all.min.css') }}"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>College Management System</title>
+  </head>
+  <body>
+    <!-- Start Navbar -->
+    <nav>
+      <div class="logo">
+        <a href="{{ url_for('index') }}"
+          ><img
+            src="{{ url_for('static', filename='imgs/logo (2).png') }}"
+            alt=""
+        /></a>
+      </div>
+      <div class="links">
+        <a href="{{ url_for('index') }}" class="home">HOME</a>
+        <a href="{{ url_for('about') }}" class="about">ABOUT</a>
+        <a href="{{ url_for('contact') }}" class="contact">CONTACT</a>
+        <a href="{{ url_for('log_in') }}" class="log-in">LOG IN</a>
+        <a href="{{ url_for('sign_up') }}" class="sign-up">SIGN UP</a>
+
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Start Body -->
+    <div class="container-photo">
+      <div class="first-subcontainer">
+        <div class="info">
+          <h3 class="faculty">Faculty of</h3>
+          <h1 class="college">Computer & Information</h1>
+          <h2 class="unversity">Kafr Elsheikh University</h2>
+        </div>
+        <h4>Go on to Know More Details</h4>
+      </div>
+      <div class="second-subcontainer">
+        <img src="{{ url_for('static', filename='imgs/9.jpg') }}" alt="" />
+      </div>
+    </div>
+    <!-- End Body -->
+
+    <!-- Start Activities -->
+    <div class="activities-container">
+      <h3>Our Activities</h3>
+      <div class="best-student">
+        <div class="first-container">
+          <div class="photo-background">
+            <img
+              alt=""
+              src="{{ url_for('static', filename='imgs/events.jpg') }}"
+            />
+          </div>
+          <div class="paragraph-events">
+            <h4>Events</h4>
+            <p>
+              The College of Computers and Information announces the
+              establishment of: <br />third forum to prepare students of the
+              College of Computers and Information for the labor market
+              <br />This will be at 10 o’clock on Monday 11/13 in the seminar
+              hall at the college <br />With the participation of: <br />-
+              Microsoft Corporation <br />- Digital World Magazine <br />-
+              Information Technology Institute (ITI). <br />- ITIDA Center for
+              Innovation and Entrepreneurship <br />- My services company
+              <br />All students are waiting to attend and benefit from the
+              present companies and opportunities within the forum
+            </p>
+            <div class="see-more-button">
+              <a href="#">See More Activities</a>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="second-container">
+          <img alt="" src="imgs/events 2 .jpg" />
+          <img alt="" src="imgs/events 3.jpg" />
+          <img alt="" src="imgs/events 4.jpg" />
+          <img alt="" src="imgs/events 5.jpg" />
+        </div> -->
+      </div>
+      <div class="our-student">
+        <h3>Our Students</h3>
+        <div class="our-student-photos">
+          <img
+            src="{{ url_for('static', filename='imgs/our student.jpg') }}"
+            alt=""
+          />
+          <img
+            src="{{ url_for('static', filename='imgs/our student 2.jpg') }}"
+            alt=""
+          />
+          <img
+            src="{{ url_for('static', filename='imgs/our student 3.jpg') }}"
+            alt=""
+          />
+          <img
+            src="{{ url_for('static', filename='imgs/our student 4.jpg') }}"
+            alt=""
+          />
+          <img
+            src="{{ url_for('static', filename='imgs/our student 5.jpg') }}"
+            alt=""
+          />
+          <img
+            src="{{ url_for('static', filename='imgs/our student 6.jpg') }}"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <!-- End Activities -->
+
+    <!-- Start Footer -->
+
+    <div class="footer-container">
+      <div class="footer-main-container">
+        <div class="first-column">
+          <a href="{{ url_for('index') }}"
+            ><img
+              src="{{ url_for('static', filename='imgs/logo (2).png') }}"
+              alt=""
+          /></a>
+          <p>
+            Far far away, behind the word mountains, far from the countries
+            Vokalia and Consonantia, there live the blind texts.
+          </p>
+          <div class="social-media-icons">
+            <a href="http://" target="_blank" rel="noopener noreferrer"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="http://" target="_blank" rel="noopener noreferrer"
+              ><i class="fa-brands fa-square-instagram"></i
+            ></a>
+            <a href="http://" target="_blank" rel="noopener noreferrer"
+              ><i class="fa-brands fa-square-x-twitter"></i
+            ></a>
+          </div>
+        </div>
+        <div class="second-column">
+          <h2>Pages</h2>
+          <div class="pages-links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+            <a href="{{ url_for('log_in') }}">Log In</a>
+            <a href="{{ url_for('sign_up') }}">Sign Up</a>
+          </div>
+        </div>
+        <div class="third-column">
+          <h2>Have a Questions?</h2>
+          <div class="address">
+            <i class="fa-solid fa-map"></i>
+            <p>El-Gish Street, Kafr Elsheikh, Arab Republic of Egypt.</p>
+          </div>
+          <div class="phone">
+            <i class="fa-solid fa-phone"></i>
+            <a href="tel:+201096554062">(+2) 01096554062</a>
+          </div>
+          <div class="email">
+            <i class="fa-solid fa-paper-plane"></i>
+            <a href="mailto:info@fci.kfs.edu.eg">info@fci.kfs.edu.eg</a>
+          </div>
+        </div>
+      </div>
+      <div class="sub-container">
+        <p>
+          Copyright ©2023 All rights reserved | This template is made with 🧡 by
+          <span
+            ><a
+              href="https://yousefelbilkasy.bio.link/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Yousef Elbilkasy</a
+            ></span
+          >
+          & <span>Alaa Elhabashy</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- End Footer -->
+  </body>
+</html>

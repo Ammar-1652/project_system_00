@@ -1,0 +1,187 @@
+/* Start Global Rules */
+:root {
+  --main-color: #ffa62b; /* Primary Color */
+  --second-color: #000000; /* Primary Text */
+  --third-color: #4d4d4d; /*  */
+  --forth-color: #161616; /*  */
+  --fifth-color: #f8f8f8; /* Text / Icons */
+  --sixth-color: #878b8b; /*  */
+}
+/* End Global Rules */
+
+/* Start Navbar */
+nav .links .home {
+  color: var(--second-color);
+}
+/* End Navbar */
+
+/* Start Body */
+
+.container-photo {
+  background-color: var(--main-color);
+}
+
+.container-photo .first-subcontainer {
+  text-align: center;
+  min-height: 180px;
+}
+
+.container-photo .first-subcontainer .info .faculty {
+  font-size: 70px;
+  padding-top: 65px;
+}
+
+.container-photo .first-subcontainer .info .college {
+  font-size: 100px;
+}
+
+.container-photo .first-subcontainer .info .unversity {
+  font-size: 70px;
+}
+
+.container-photo .first-subcontainer h4 {
+  margin-top: 90px;
+  font-size: 50px;
+}
+
+.container-photo .second-subcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-photo .second-subcontainer img {
+  width: 95%;
+  padding-bottom: 35px;
+}
+
+/* End Body */
+
+/* Start Activities */
+
+/* Start Events */
+.activities-container h3 {
+  margin-top: 170px;
+  margin-bottom: 25px;
+  font-size: 50px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.activities-container .best-student {
+  position: relative;
+}
+
+.activities-container .best-student .photo-background img {
+  width: 100%;
+  padding: 3%;
+  animation: bounce 2s infinite;
+}
+
+.activities-container .best-student .photo-background {
+  background-color: var(--main-color);
+  z-index: -1;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.activities-container .best-student .first-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.activities-container .best-student .first-container .paragraph-events {
+  width: 38%;
+}
+
+.activities-container .best-student .first-container .paragraph-events h4 {
+  padding-bottom: 10px;
+  font-size: 25px;
+}
+
+.activities-container .best-student .first-container .paragraph-events p {
+  color: var(--third-color);
+}
+
+.activities-container
+  .best-student
+  .first-container
+  .paragraph-events
+  .see-more-button {
+  width: 190px;
+  height: 40px;
+  background-color: var(--main-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  border-radius: 15px;
+}
+
+.activities-container
+  .best-student
+  .first-container
+  .paragraph-events
+  .see-more-button
+  a {
+  text-decoration: none;
+  color: var(--second-color);
+  font-size: 18px;
+}
+
+.activities-container .best-student .second-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-top: 55px;
+}
+
+.activities-container .best-student .second-container img {
+  padding: 20px;
+  width: 43%;
+  animation: bounce 2s infinite;
+}
+/* End Events */
+
+/* Start Our Students */
+
+.activities-container .our-student h3 {
+  margin-top: 170px;
+  margin-bottom: 25px;
+  font-size: 50px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.activities-container .our-student .our-student-photos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  position: relative;
+  bottom: -100%;
+}
+
+.activities-container .our-student .our-student-photos img {
+  width: 45%;
+  padding: 15px;
+  animation: slideIn 1s forwards;
+}
+
+.activities-container .our-student .our-student-photos img:nth-child(5) {
+  padding-bottom: 60px;
+}
+
+.activities-container .our-student .our-student-photos img:last-child {
+  padding-bottom: 60px;
+}
+/* End Our Students */
+/* End Activities */

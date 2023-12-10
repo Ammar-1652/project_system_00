@@ -1,0 +1,136 @@
+/* Start Global Rules */
+body {
+  font-family: "Poppins", sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: #f8f8f8;
+  font-size: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width = 786px) {
+}
+
+@media (min-width = 992px) {
+}
+
+@media (min-width = 1200px) {
+}
+
+:root {
+  --main-color: #ffa62b; /* Primary Color */
+  --second-color: #000000; /* Primary Text */
+  --third-color: #4d4d4d; /* Secondary Text */
+  --forth-color: #161616; /* Footer Color */
+  --fifth-color: #f8f8f8; /* Text / Icons */
+  --sixth-color: #878b8b; /*  */
+}
+
+/* End Global Rules */
+
+/* Start Navbar */
+nav .links .contact {
+  color: var(--second-color);
+}
+/* End Navbar */
+
+/* Start Body */
+
+.main-container {
+  /* background-color: var(--fifth-color); */
+  text-align: center;
+}
+
+.main-container h1 {
+  margin-top: 100px;
+}
+
+.main-container .subcontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.main-container .subcontainer .first-subcontainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  width: 70%;
+  padding: 45px 0;
+}
+
+.main-container .subcontainer .first-subcontainer div {
+  width: calc(100% / 3);
+}
+
+.main-container .subcontainer .first-subcontainer div p span {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* End Body */
+
+/* Start Form */
+
+.second-subcontainer {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 60px;
+}
+
+form ::placeholder {
+  font-family: "Poppins", sans-serif;
+  padding: 10px;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--third-color);
+}
+
+form {
+  flex-basis: 70%;
+}
+
+.second-subcontainer .main-input {
+  width: 100%;
+  display: block;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.second-subcontainer .main-input:focus {
+  outline: var(--main-color) solid 2px;
+  border: none;
+}
+
+.second-subcontainer textarea.main-input {
+  height: 200px;
+}
+
+.second-subcontainer input[type="submit"] {
+  background-color: var(--main-color);
+  padding: 20px;
+  display: flex;
+  margin: auto;
+  color: var(--second-color);
+  cursor: pointer;
+  border: none;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  font-size: 17px;
+  text-transform: capitalize;
+}
+/* End Form */

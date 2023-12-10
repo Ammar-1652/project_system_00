@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap"
+      rel="stylesheet"
+    />
+    <!-- CSS File -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/master.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/timetable_for_student.css') }}"
+    />
+    <!-- Normalize File -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/normalize.css') }}"
+    />
+    <!-- Tab Icon -->
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='imgs/logo (2).png') }}"
+      type="fci-icon"
+    />
+    <!-- Font Awesome Library -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/all.min.css') }}"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TimeTable for Students</title>
+  </head>
+  <body>
+    <!-- Start Navbar -->
+    <nav>
+      <div class="logo">
+        <a href="{{ url_for('index') }}"
+          ><img
+            src="{{ url_for('static', filename='imgs/logo (2).png') }}"
+            alt=""
+        /></a>
+      </div>
+      <div class="links">
+        <a href="{{ url_for('index') }}" class="home">HOME</a>
+        <a href="{{ url_for('about') }}" class="about">ABOUT</a>
+        <a href="{{ url_for('contact') }}" class="contact">CONTACT</a>
+        <a href="{{ url_for('log_in') }}" class="log-in">LOG IN</a>
+        <a href="{{ url_for('sign_up') }}" class="sign-up">SIGN UP</a>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Start Dashboard -->
+
+    <!-- Start First Column -->
+
+    <div class="big-container">
+      <div class="first-column-container">
+        <div class="info-container">
+          <div class="courses">
+            <a href="{{ url_for('courses_for_student') }}" class="courses-link">
+              <i class="fa-solid fa-book"></i>
+              <p>courses</p>
+            </a>
+          </div>
+          <div class="timetable">
+            <a
+              href="{{ url_for('timetable_for_student') }}"
+              class="timetable-link"
+            >
+              <i class="fa-regular fa-calendar-days"></i>
+              <p>time table</p>
+            </a>
+          </div>
+          <div class="assignment">
+            <a
+              href="{{ url_for('assignment_for_student') }}"
+              class="assignment-link"
+            >
+              <i class="fa-solid fa-list-check"></i>
+              <p>assignments</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="edit-container">
+          <div class="setting-container">
+            <a href="">
+              <i class="fa-solid fa-gear"></i>
+              <p>Settings</p>
+            </a>
+          </div>
+          <div class="log-out-container">
+            <a href="{{ url_for('log_in') }}">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <p>log out</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-container">
+        <input type="text" placeholder="🔍 Search..." class="search-input" />
+
+        <div class="header-end-container">
+          <i class="fa-solid fa-bell"></i>
+          <div class="profile-container">
+            <i class="fa-solid fa-user"></i>
+            <div class="acount-details">
+              <h6>student name</h6>
+              <p>his level</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End First Column -->
+
+    <!-- End Dashboard -->
+
+    <!-- Start Footer -->
+
+    <div class="footer-container">
+      <div class="footer-main-container">
+        <div class="first-column">
+          <a href="{{ url_for('index') }}"
+            ><img
+              src="{{ url_for('static', filename='imgs/logo (2).png') }}"
+              alt=""
+          /></a>
+          <p>
+            Far far away, behind the word mountains, far from the countries
+            Vokalia and Consonantia, there live the blind texts.
+          </p>
+          <div class="social-media-icons">
+            <a href="http://" target="_blank" rel="noopener noreferrer"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="http://" target="_blank" rel="noopener noreferrer"
+              ><i class="fa-brands fa-square-instagram"></i
+            ></a>
+            <a href="http://" target="_blank" rel="noopener noreferrer"
+              ><i class="fa-brands fa-square-x-twitter"></i
+            ></a>
+          </div>
+        </div>
+        <div class="second-column">
+          <h2>Pages</h2>
+          <div class="pages-links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+            <a href="{{ url_for('log_in') }}">Log In</a>
+            <a href="{{ url_for('sign_up') }}">Sign Up</a>
+          </div>
+        </div>
+        <div class="third-column">
+          <h2>Have a Questions?</h2>
+          <div class="address">
+            <i class="fa-solid fa-map"></i>
+            <p>El-Gish Street, Kafr Elsheikh, Arab Republic of Egypt.</p>
+          </div>
+          <div class="phone">
+            <i class="fa-solid fa-phone"></i>
+            <a href="tel:+201096554062">(+2) 01096554062</a>
+          </div>
+          <div class="email">
+            <i class="fa-solid fa-paper-plane"></i>
+            <a href="mailto:info@fci.kfs.edu.eg">info@fci.kfs.edu.eg</a>
+          </div>
+        </div>
+      </div>
+      <div class="sub-container">
+        <p>
+          Copyright ©2023 All rights reserved | This template is made with 🧡 by
+          <span
+            ><a
+              href="https://yousefelbilkasy.bio.link/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Yousef Elbilkasy</a
+            ></span
+          >
+          & <span>Alaa Elhabashy</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- End Footer -->
+  </body>
+</html>
