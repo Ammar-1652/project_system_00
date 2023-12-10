@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from models import db, Student, Professor, Assistant, Course, Admin, Enrollment
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Tables.db'
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///Tables.db"
 db.init_app(app)
 
 
@@ -21,11 +21,11 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route("/log_in", methods=['GET', 'POST'])
+@app.route("/log_in", methods=["GET", "POST"])
 def log_in():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
+    if request.method == "POST":
+        email = request.form["email"]
+        password = request.form["password"]
 
         # Check if the user exists in the students, professors, assistants, and admin tables
         student = Student.query.filter_by(email=email, password=password).first()
@@ -60,20 +60,20 @@ def sign_up():
     return render_template("sign_up.html")
 
 
-@app.route("/sign_up_for_students", methods=['GET', 'POST'])
+@app.route("/sign_up_for_students", methods=["GET", "POST"])
 def sign_up_for_students():
-    if request.method == 'POST':
+    if request.method == "POST":
         s = Student(
-            first_name=request.form['first-name'],
-            middle_name=request.form['middle-name'],
-            last_name=request.form['last-name'],
-            contact_number=request.form['contact-number'],
-            national_id=request.form['national-id'],
-            email=request.form['email'],
-            date_of_birth=request.form['date-of-birth'],
-            gender=request.form['gender'],
-            class_level=request.form['class_level'],
-            password=request.form['password']
+            first_name=request.form["first-name"],
+            middle_name=request.form["middle-name"],
+            last_name=request.form["last-name"],
+            contact_number=request.form["contact-number"],
+            national_id=request.form["national-id"],
+            email=request.form["email"],
+            date_of_birth=request.form["date-of-birth"],
+            gender=request.form["gender"],
+            class_level=request.form["class_level"],
+            password=request.form["password"],
         )
         db.session.add(s)
         db.session.commit()
@@ -81,19 +81,19 @@ def sign_up_for_students():
     return render_template("sign_up_for_students.html")
 
 
-@app.route("/sign_up_for_ass_prof", methods=['GET', 'POST'])
+@app.route("/sign_up_for_ass_prof", methods=["GET", "POST"])
 def sign_up_for_ass_prof():
-    if request.method == 'POST':
+    if request.method == "POST":
         a = Assistant(
-            first_name=request.form['first-name'],
-            middle_name=request.form['middle-name'],
-            last_name=request.form['last-name'],
-            contact_number=request.form['contact-number'],
-            national_id=request.form['national-id'],
-            email=request.form['email'],
-            date_of_birth=request.form['date-of-birth'],
-            gender=request.form['gender'],
-            password=request.form['password']
+            first_name=request.form["first-name"],
+            middle_name=request.form["middle-name"],
+            last_name=request.form["last-name"],
+            contact_number=request.form["contact-number"],
+            national_id=request.form["national-id"],
+            email=request.form["email"],
+            date_of_birth=request.form["date-of-birth"],
+            gender=request.form["gender"],
+            password=request.form["password"],
         )
         db.session.add(a)
         db.session.commit()
@@ -101,19 +101,19 @@ def sign_up_for_ass_prof():
     return render_template("sign_up_for_ass_prof.html")
 
 
-@app.route("/sign_up_for_prof", methods=['GET', 'POST'])
+@app.route("/sign_up_for_prof", methods=["GET", "POST"])
 def sign_up_for_prof():
-    if request.method == 'POST':
+    if request.method == "POST":
         p = Professor(
-            first_name=request.form['first-name'],
-            middle_name=request.form['middle-name'],
-            last_name=request.form['last-name'],
-            contact_number=request.form['contact-number'],
-            national_id=request.form['national-id'],
-            email=request.form['email'],
-            date_of_birth=request.form['date-of-birth'],
-            gender=request.form['gender'],
-            password=request.form['password']
+            first_name=request.form["first-name"],
+            middle_name=request.form["middle-name"],
+            last_name=request.form["last-name"],
+            contact_number=request.form["contact-number"],
+            national_id=request.form["national-id"],
+            email=request.form["email"],
+            date_of_birth=request.form["date-of-birth"],
+            gender=request.form["gender"],
+            password=request.form["password"],
         )
         db.session.add(p)
         db.session.commit()
@@ -121,19 +121,19 @@ def sign_up_for_prof():
     return render_template("sign_up_for_prof.html")
 
 
-@app.route("/dashboard", methods=['GET', 'POST'])
+@app.route("/dashboard", methods=["GET", "POST"])
 def admin_dashboard():
-    if request.method == 'POST':
+    if request.method == "POST":
         # Handle enrollment creation when the form is submitted
-        user_id = request.form['user_id']
-        user_type = request.form['user_type']
-        course_id = request.form['course_id']
+        user_id = request.form["user_id"]
+        user_type = request.form["user_type"]
+        course_id = request.form["course_id"]
 
-        if user_type == 'student':
+        if user_type == "student":
             enrollment = Enrollment(student_id=user_id, course_id=course_id)
-        elif user_type == 'professor':
+        elif user_type == "professor":
             enrollment = Enrollment(professor_id=user_id, course_id=course_id)
-        elif user_type == 'assistant':
+        elif user_type == "assistant":
             enrollment = Enrollment(assistant_id=user_id, course_id=course_id)
         else:
             return "Invalid user type"
@@ -148,7 +148,14 @@ def admin_dashboard():
     assistants = Assistant.query.all()
     courses = Course.query.all()
 
-    return render_template("dashboard.html", enrollments=enrollments, students=students, professors=professors, assistants=assistants, courses=courses)
+    return render_template(
+        "dashboard.html",
+        enrollments=enrollments,
+        students=students,
+        professors=professors,
+        assistants=assistants,
+        courses=courses,
+    )
 
 
 @app.route("/student_dashboard")
@@ -178,6 +185,7 @@ def professor_dashboard():
 def assistant_dashboard():
     # Add logic to display assistant-specific data
     return render_template("ass_professor_dashboard.html")
+
 
 if __name__ == "__main__":
     with app.app_context():
