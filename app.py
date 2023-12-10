@@ -35,7 +35,7 @@ def log_in():
 
         if student:
             # Redirect to student dashboard
-            return redirect(url_for('courses_for_student'))
+            return redirect(url_for("/courses_for_student"))
 
         elif professor:
             # Redirect to professor dashboard
@@ -163,18 +163,25 @@ def student_dashboard():
     # Add logic to display student-specific data
     return render_template("student_dashboard.html")
 
-@app.route('/courses_for_student')
+
+@app.route("/courses_for_student")
 def courses_for_student():
     # Your view logic here
     return render_template("courses_for_student.html")
-@app.route('/timetable_for_student')
+
+
+@app.route("/timetable_for_student")
 def timetable_for_student():
     # Your view logic here
     return render_template("timetable_for_student.html")
-@app.route('/assignment_for_student')
+
+
+@app.route("/assignment_for_student")
 def assignment_for_student():
     # Your view logic here
     return render_template("assignment_for_student.html")
+
+
 @app.route("/professor_dashboard")
 def professor_dashboard():
     # Add logic to display professor-specific data
