@@ -1,8 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for,session
 from models import db, Student, Professor, Assistant, Course, Admin, student_course
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///Tables.db"
+app.config["SECRET_KEY"] = "your_secret_key"
 db.init_app(app)
 
 
@@ -34,9 +35,8 @@ def log_in():
         admin = Admin.query.filter_by(username=email, password=password).first()
 
         if student :
-            # Redirect to student dashboard
+            session["user_id"] = student.id
             return redirect(url_for("courses_for_student"))
-
         elif professor :
             # Redirect to professor dashboard
             return redirect("/professor_dashboard")
@@ -129,19 +129,23 @@ def admin_dashboard():
         course_id = request.form["course_id"]
 
         if user_type == "student":
-            enrollment = Enrollment(student_id=user_id, course_id=course_id)
+            user = Student.query.get(user_id)
         elif user_type == "professor":
-            enrollment = Enrollment(professor_id=user_id, course_id=course_id)
+            user = Professor.query.get(user_id)
         elif user_type == "assistant":
-            enrollment = Enrollment(assistant_id=user_id, course_id=course_id)
+            user = Assistant.query.get(user_id)
         else:
             return "Invalid user type"
 
-        db.session.add(enrollment)
-        db.session.commit()
+        if user is not None:
+            course = Course.query.get(course_id)
+            # Add the course to the user's courses relationship
+            user.courses.append(course)
+            db.session.commit()
+        else:
+            return "User not found"
 
     # Retrieve data for displaying on the admin dashboard
-    enrollments = Enrollment.query.all()
     students = Student.query.all()
     professors = Professor.query.all()
     assistants = Assistant.query.all()
@@ -149,14 +153,11 @@ def admin_dashboard():
 
     return render_template(
         "dashboard.html",
-        enrollments=enrollments,
         students=students,
         professors=professors,
         assistants=assistants,
         courses=courses,
     )
-
-
 @app.route("/student_dashboard")
 def student_dashboard():
     # Add logic to display student-specific data
@@ -165,8 +166,18 @@ def student_dashboard():
 
 @app.route("/courses_for_student")
 def courses_for_student():
-    # Your view logic here
-    return render_template("courses_for_student.html")
+    student_id = session.get("user_id")
+
+    if student_id is not None:
+        # Replace the following lines with your actual data retrieval logic
+        student = Student.query.get(student_id)  # Replace with proper database query
+        student_courses = student.courses  # Assuming the relationship is defined correctly
+        return render_template("courses_for_student.html", student=student, courses=student_courses)
+
+    # Redirect to login if user is not logged in
+    return redirect(url_for("log_in"))
+    
+
 
 
 @app.route("/timetable_for_student")
