@@ -9,6 +9,7 @@ db.init_app(app)
 
 
 @app.route("/")
+@app.route("/index")
 def index():
     return render_template("index.html")
 
@@ -23,6 +24,7 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/login", methods=["GET", "POST"], endpoint="log_in")
 def log_in():
     form = LoginForm()
 
