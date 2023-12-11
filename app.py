@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session,flash
 from models import db, Student, Professor, Assistant, Course, Admin, student_course
 from forms import LoginForm, RegistrationForm
 
@@ -23,39 +23,35 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route("/log_in", methods=["GET", "POST"])
 def log_in():
     form = LoginForm()
-    if request.method == "POST":
-        email = request.form["email"]
-        password = request.form["password"]
+
+    if form.validate_on_submit():
+        email = form.email.data
+        password = form.password.data
+        remember = form.remember.data
 
         # Check if the user exists in the students, professors, assistants, and admin tables
-        student = Student.query.filter_by(email=email, password=password).first()
-        professor = Professor.query.filter_by(email=email, password=password).first()
-        assistant = Assistant.query.filter_by(email=email, password=password).first()
-        admin = Admin.query.filter_by(username=email, password=password).first()
+        user = Student.query.filter_by(email=email, password=password).first() or \
+            Professor.query.filter_by(email=email, password=password).first() or \
+            Assistant.query.filter_by(email=email, password=password).first() or \
+            Admin.query.filter_by(username=email, password=password).first()
 
-        if student:
-            session["user_id"] = student.id
-            return redirect(url_for("courses_for_student"))
-        elif professor:
-            # Redirect to professor dashboard
-            return redirect("/professor_dashboard")
+        if user:
+            login_user(user, remember=remember)
 
-        elif assistant:
-            # Redirect to assistant dashboard
-            return redirect("/assistant_dashboard")
-
-        elif admin and admin.isVerified:
-            # Redirect to admin dashboard
-            return redirect("/admin_dashboard")
-
+            if isinstance(user, Student):
+                return redirect(url_for("courses_for_student"))
+            elif isinstance(user, Professor):
+                return redirect("/professor_dashboard")
+            elif isinstance(user, Assistant):
+                return redirect("/assistant_dashboard")
+            elif isinstance(user, Admin) and user.isVerified:
+                return redirect("/admin_dashboard")
         else:
-            return "Invalid email or password"
+            flash('Invalid email or password', 'danger')
 
     return render_template("log_in.html", form=form)
-
 
 @app.route("/sign_up")
 def sign_up():
@@ -65,64 +61,83 @@ def sign_up():
 @app.route("/sign_up_for_students", methods=["GET", "POST"])
 def sign_up_for_students():
     form = RegistrationForm()
-    if request.method == "POST":
-        s = Student(
-            first_name=request.form["first-name"],
-            middle_name=request.form["middle-name"],
-            last_name=request.form["last-name"],
-            contact_number=request.form["contact-number"],
-            national_id=request.form["national-id"],
-            email=request.form["email"],
-            date_of_birth=request.form["date-of-birth"],
-            gender=request.form["gender"],
-            class_level=request.form["class_level"],
-            password=request.form["password"],
+
+    if form.validate_on_submit():
+        # Assuming you have a User model
+        student = Student(
+            fname=form.fname.data,
+            mname=form.mname.data,
+            lname=form.lname.data,
+            username=form.username.data,
+            email=form.email.data,
+            contact_number=form.contact_number.data,
+            national_id=form.national_id.data,
+            password=form.password.data,
+            gender=form.gender.data,
+            level=form.level.data,
+            date_of_birth=form.date_of_birth.data
         )
-        db.session.add(s)
+
+        db.session.add(student)
         db.session.commit()
 
+        flash('Registration successful!', 'success')
+        return redirect(url_for('home'))  # Change 'home' to your actual home route
     return render_template("sign_up_for_students.html", form=form)
-
 
 @app.route("/sign_up_for_ass_prof", methods=["GET", "POST"])
 def sign_up_for_ass_prof():
-    if request.method == "POST":
-        a = Assistant(
-            first_name=request.form["first-name"],
-            middle_name=request.form["middle-name"],
-            last_name=request.form["last-name"],
-            contact_number=request.form["contact-number"],
-            national_id=request.form["national-id"],
-            email=request.form["email"],
-            date_of_birth=request.form["date-of-birth"],
-            gender=request.form["gender"],
-            password=request.form["password"],
+    form = RegistrationForm()
+
+    if form.validate_on_submit():
+        # Assuming you have a User model
+        assistant = Assistant(
+            fname=form.fname.data,
+            mname=form.mname.data,
+            lname=form.lname.data,
+            username=form.username.data,
+            email=form.email.data,
+            contact_number=form.contact_number.data,
+            national_id=form.national_id.data,
+            password=form.password.data,
+            gender=form.gender.data,
+            level=form.level.data,
+            date_of_birth=form.date_of_birth.data
         )
-        db.session.add(a)
+
+        db.session.add(assistant)
         db.session.commit()
 
-    return render_template("sign_up_for_ass_prof.html")
-
+        flash('Registration successful!', 'success')
+        return redirect(url_for('home'))  # Change 'home' to your actual home route
+    return render_template("sign_up_for_ass_prof.html", form=form)
 
 @app.route("/sign_up_for_prof", methods=["GET", "POST"])
 def sign_up_for_prof():
     form = RegistrationForm()
-    if request.method == "POST":
-        p = Professor(
-            first_name=request.form["first-name"],
-            middle_name=request.form["middle-name"],
-            last_name=request.form["last-name"],
-            contact_number=request.form["contact-number"],
-            national_id=request.form["national-id"],
-            email=request.form["email"],
-            date_of_birth=request.form["date-of-birth"],
-            gender=request.form["gender"],
-            password=request.form["password"],
+
+    if form.validate_on_submit():
+        # Assuming you have a User model
+        professor = Professor(
+            fname=form.fname.data,
+            mname=form.mname.data,
+            lname=form.lname.data,
+            username=form.username.data,
+            email=form.email.data,
+            contact_number=form.contact_number.data,
+            national_id=form.national_id.data,
+            password=form.password.data,
+            gender=form.gender.data,
+            level=form.level.data,
+            date_of_birth=form.date_of_birth.data
         )
-        db.session.add(p)
+
+        db.session.add(professor)
         db.session.commit()
 
-    return render_template("sign_up_for_prof.html", form=form)
+        flash('Registration successful!', 'success')
+        return redirect(url_for('home'))  # Change 'home' to your actual home route
+    return render_template("sign_up_for_students.html", form=form)
 
 
 @app.route("/dashboard", methods=["GET", "POST"])
