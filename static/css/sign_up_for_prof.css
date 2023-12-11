@@ -17,8 +17,6 @@ body {
 }
 /* Global Rules */
 
-/* Start Navbar */
-
 /* Start Sign Up For Profs */
 .big-sign-up-container {
   display: flex;
@@ -42,14 +40,25 @@ form {
   width: 90%;
 }
 
+form .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 .big-sign-up-container .signup-container h2 {
   margin-bottom: 20px;
   color: #333;
 }
 
 .big-sign-up-container .signup-container i {
-  margin-bottom: 20px;
   font-size: 100px;
+  margin-bottom: 20px;
   color: var(--main-color);
 }
 
@@ -57,8 +66,9 @@ form {
   color: var(--main-color);
   font-size: 15px;
   display: flex;
-  margin: 25px 0;
+  margin: 25px auto;
   justify-content: center;
+  width: fit-content;
 }
 
 .columns {
@@ -77,8 +87,7 @@ input[type="text"],
 input[type="password"],
 input[type="email"],
 input[type="tel"],
-input[type="date"],
-select {
+input[type="date"] {
   width: 100%;
   margin-bottom: 20px;
   padding: 12px;
@@ -94,25 +103,24 @@ select {
   margin: 25px auto;
 }
 
-select {
+/* select {
+} */
+
+select[name="gender"],
+select[name="level"] {
   width: 100%;
   margin-bottom: 20px;
-  padding: 12px;
+  padding: 9px;
   border-radius: 25px;
   border: 1px solid #ccc;
   transition: all 0.3s ease-in-out;
   color: #555;
-  font-size: 16px;
   outline: none;
-}
-
-select[name="gender"],
-select[name="class_level"] {
   font-size: 16px;
 }
 
 input[type="file"] {
-  margin-top: 10px; /* Adjust margin based on your design */
+  margin-top: 12px; /* Adjust margin based on your design */
   padding: 12px;
   border-radius: 25px;
   border: 1px solid #ccc;
@@ -123,8 +131,9 @@ input[type="file"] {
 }
 
 label {
-  display: block;
   margin-top: 30px;
+  display: block;
+  margin-bottom: 5px;
   color: var(--second-color);
 }
 
@@ -169,200 +178,3 @@ input[type="submit"]:active {
 }
 
 /* End Sign Up For Profs */
-
-/* Start Footer */
-.footer-container {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  background-color: var(--forth-color);
-}
-
-.footer-container .footer-main-container {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  justify-content: space-around;
-  background-color: var(--forth-color);
-  color: var(--fifth-color);
-  padding-top: 80px;
-  align-items: flex-start;
-  font-size: 15px;
-}
-
-.footer-container .footer-main-container .first-column {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  width: calc(100% / 3);
-  margin-left: 35px;
-}
-
-.footer-container .footer-main-container .first-column img {
-  width: 60px;
-  margin-bottom: 25px;
-}
-
-.footer-container .footer-main-container .first-column p {
-  margin-bottom: 25px;
-  color: var(--sixth-color);
-}
-
-.footer-container
-  .footer-main-container
-  .first-column
-  .social-media-icons
-  a:not(:first-child) {
-  font-size: 30px;
-  color: var(--main-color);
-  padding-left: 20px;
-}
-
-.footer-container
-  .footer-main-container
-  .first-column
-  .social-media-icons
-  a:first-child {
-  font-size: 30px;
-  color: var(--main-color);
-}
-
-.footer-container .footer-main-container .second-column {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  width: calc(100% / 3);
-  justify-content: space-evenly;
-  text-align: center;
-}
-
-.footer-container .footer-main-container .second-column h2 {
-  padding-bottom: 30px;
-}
-
-.footer-container .footer-main-container .second-column .pages-links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.footer-container .footer-main-container .second-column .pages-links a {
-  text-decoration: none;
-  display: block;
-  color: var(--sixth-color);
-  padding: 5px;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.footer-container .footer-main-container .second-column .pages-links a:hover {
-  color: var(--fifth-color);
-}
-
-.footer-container .footer-main-container .third-column {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  width: calc(100% / 3);
-  align-items: center;
-}
-
-.footer-container .footer-main-container .third-column div {
-  padding: 17px 0;
-  display: flex;
-  align-items: baseline;
-}
-
-.footer-container .footer-main-container .third-column .address {
-  width: 40%;
-}
-
-.footer-container .footer-main-container .third-column .address i {
-  font-size: 15px;
-  color: var(--main-color);
-  font-size: 20px;
-  padding-right: 35px;
-}
-
-.footer-container .footer-main-container .third-column .address p {
-  font-style: normal;
-  color: var(--sixth-color);
-  width: 80%;
-}
-
-.footer-container .footer-main-container .third-column .phone i {
-  font-size: 15px;
-  color: var(--main-color);
-  padding-right: 35px;
-  font-size: 20px;
-}
-
-.footer-container .footer-main-container .third-column .phone a {
-  font-style: normal;
-  color: var(--sixth-color);
-  text-decoration: none;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.footer-container .footer-main-container .third-column .phone a:hover {
-  color: var(--fifth-color);
-}
-
-.footer-container .footer-main-container .third-column .email {
-  padding-bottom: 50px;
-  padding-top: 17px;
-}
-
-.footer-container .footer-main-container .third-column .email i {
-  font-size: 15px;
-  color: var(--main-color);
-  font-size: 20px;
-  padding-right: 35px;
-}
-
-.footer-container .footer-main-container .third-column .email a {
-  font-style: normal;
-  color: var(--sixth-color);
-  text-decoration: none;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.footer-container .footer-main-container .third-column .email a:hover {
-  color: var(--fifth-color);
-}
-
-.footer-container .sub-container {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.footer-container .sub-container p {
-  color: var(--sixth-color);
-  font-size: 15px;
-  text-align: center;
-  padding: 50px;
-}
-
-.footer-container .sub-container p span {
-  color: var(--main-color);
-  font-weight: bold;
-}
-
-.footer-container .sub-container p span a {
-  color: var(--main-color);
-  font-weight: bold;
-  text-decoration: none;
-}
-/* End Footer */

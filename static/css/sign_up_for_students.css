@@ -40,6 +40,17 @@ form {
   width: 90%;
 }
 
+form .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 .big-sign-up-container .signup-container h2 {
   margin-bottom: 20px;
   color: #333;
@@ -55,8 +66,9 @@ form {
   color: var(--main-color);
   font-size: 15px;
   display: flex;
-  margin: 25px 0;
+  margin: 25px auto;
   justify-content: center;
+  width: fit-content;
 }
 
 .columns {
@@ -91,19 +103,19 @@ input[type="date"] {
   margin: 25px auto;
 }
 
-select {
+/* select {
+} */
+
+select[name="gender"],
+select[name="level"] {
   width: 100%;
   margin-bottom: 20px;
-  padding: 10px;
+  padding: 9px;
   border-radius: 25px;
   border: 1px solid #ccc;
   transition: all 0.3s ease-in-out;
   color: #555;
   outline: none;
-}
-
-select[name="gender"],
-select[name="class_level"] {
   font-size: 16px;
 }
 

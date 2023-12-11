@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for,session
+from flask import Flask, render_template, request, redirect, url_for, session
 from models import db, Student, Professor, Assistant, Course, Admin, student_course
+from forms import LoginForm, RegistrationForm
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///Tables.db"
@@ -24,6 +25,7 @@ def contact():
 
 @app.route("/log_in", methods=["GET", "POST"])
 def log_in():
+    form = LoginForm()
     if request.method == "POST":
         email = request.form["email"]
         password = request.form["password"]
@@ -34,10 +36,10 @@ def log_in():
         assistant = Assistant.query.filter_by(email=email, password=password).first()
         admin = Admin.query.filter_by(username=email, password=password).first()
 
-        if student :
+        if student:
             session["user_id"] = student.id
             return redirect(url_for("courses_for_student"))
-        elif professor :
+        elif professor:
             # Redirect to professor dashboard
             return redirect("/professor_dashboard")
 
@@ -52,8 +54,9 @@ def log_in():
         else:
             return "Invalid email or password"
 
-    return render_template("log_in.html")
-    
+    return render_template("log_in.html", form=form)
+
+
 @app.route("/sign_up")
 def sign_up():
     return render_template("sign_up.html")
@@ -61,6 +64,7 @@ def sign_up():
 
 @app.route("/sign_up_for_students", methods=["GET", "POST"])
 def sign_up_for_students():
+    form = RegistrationForm()
     if request.method == "POST":
         s = Student(
             first_name=request.form["first-name"],
@@ -77,7 +81,7 @@ def sign_up_for_students():
         db.session.add(s)
         db.session.commit()
 
-    return render_template("sign_up_for_students.html")
+    return render_template("sign_up_for_students.html", form=form)
 
 
 @app.route("/sign_up_for_ass_prof", methods=["GET", "POST"])
@@ -102,6 +106,7 @@ def sign_up_for_ass_prof():
 
 @app.route("/sign_up_for_prof", methods=["GET", "POST"])
 def sign_up_for_prof():
+    form = RegistrationForm()
     if request.method == "POST":
         p = Professor(
             first_name=request.form["first-name"],
@@ -117,7 +122,7 @@ def sign_up_for_prof():
         db.session.add(p)
         db.session.commit()
 
-    return render_template("sign_up_for_prof.html")
+    return render_template("sign_up_for_prof.html", form=form)
 
 
 @app.route("/dashboard", methods=["GET", "POST"])
@@ -158,6 +163,8 @@ def admin_dashboard():
         assistants=assistants,
         courses=courses,
     )
+
+
 @app.route("/student_dashboard")
 def student_dashboard():
     # Add logic to display student-specific data
@@ -171,13 +178,15 @@ def courses_for_student():
     if student_id is not None:
         # Replace the following lines with your actual data retrieval logic
         student = Student.query.get(student_id)  # Replace with proper database query
-        student_courses = student.courses  # Assuming the relationship is defined correctly
-        return render_template("courses_for_student.html", student=student, courses=student_courses)
+        student_courses = (
+            student.courses
+        )  # Assuming the relationship is defined correctly
+        return render_template(
+            "courses_for_student.html", student=student, courses=student_courses
+        )
 
     # Redirect to login if user is not logged in
     return redirect(url_for("log_in"))
-    
-
 
 
 @app.route("/timetable_for_student")

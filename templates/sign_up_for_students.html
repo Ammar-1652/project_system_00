@@ -65,69 +65,52 @@
         <form action="{{ url_for('sign_up_for_students') }}" method="post">
           <div class="columns">
             <div class="column">
-              <input
-                type="text"
-                name="first-name"
-                placeholder="First Name"
-                required
-              /><br />
-              <input
-                type="text"
-                name="last-name"
-                placeholder="Last Name"
-                required
-              /><br />
-              <input
-                type="tel"
-                name="contact-number"
-                placeholder="Contact Number"
-                maxlength="11"
-                minlength="11"
-                required
-              /><br />
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                required
-              /><br />
-              <select name="class_level" required>
-                <option value="" disabled selected>Select Class Level</option>
-                <option value="Level 1">Level 1</option></select
-              ><br />
+              {{ form.fname.label(for_=form.fname.id, class_="visually-hidden")
+              }} {{ form.fname(placeholder=form.fname.label.text) }}
+              <br />
+              {{ form.lname.label(for_=form.lname.id, class_="visually-hidden")
+              }} {{ form.lname(placeholder=form.lname.label.text) }}
+              <br />
+              {{ form.username.label(for_=form.username.id,
+              class_="visually-hidden") }} {{
+              form.username(placeholder=form.username.label.text) }}
+              <br />
+              {{ form.email.label(for_=form.email.id, class_="visually-hidden")
+              }} {{ form.email(placeholder=form.email.label.text) }}
+              <br />
+              {{ form.password.label(for_=form.password.id,
+              class_="visually-hidden") }} {{
+              form.password(placeholder=form.password.label.text) }}
+              <br />
+              {{ form.confirm_password.label(for_=form.confirm_password.id,
+              class_="visually-hidden") }} {{
+              form.confirm_password(placeholder=form.confirm_password.label.text)
+              }}
+              <br />
             </div>
             <div class="column">
-              <input
-                type="text"
-                name="middle-name"
-                placeholder="Middle Name"
-                required
-              /><br />
-              <input
-                type="tel"
-                name="national-id"
-                placeholder="National ID"
-                maxlength="14"
-                minlength="14"
-                required
-              /><br />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                required
-              /><br />
-              <input
-                type="date"
-                name="date-of-birth"
-                placeholder="Date of Birth"
-                required
-              /><br />
-              <select name="gender" required>
-                <option value="" disabled selected>Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option></select
-              ><br />
+              {{ form.mname.label(for_=form.mname.id, class_="visually-hidden")
+              }} {{ form.mname(placeholder=form.mname.label.text) }}
+              <br />
+              {{ form.national_id.label(for_=form.national_id.id,
+              class_="visually-hidden") }} {{
+              form.national_id(placeholder=form.national_id.label.text) }}
+              <br />
+              {{ form.contact_number.label(for_=form.contact_number.id,
+              class_="visually-hidden") }} {{
+              form.contact_number(placeholder=form.contact_number.label.text) }}
+              <br />
+              {{ form.date_of_birth.label(for_=form.date_of_birth.id,
+              class_="visually-hidden") }} {{
+              form.date_of_birth(placeholder=form.date_of_birth.label.text) }}
+              <br />
+              {{ form.gender.label(for_=form.gender.id,
+              class_="visually-hidden") }} {{
+              form.gender(placeholder=form.gender.label.text) }}
+              <br />
+              {{ form.level.label(for_=form.level.id, class_="visually-hidden")
+              }} {{ form.level(placeholder=form.level.label.text) }}
+              <br />
             </div>
           </div>
           <a href="{{ url_for('log_in') }}">Or You Are Already Have Account</a>

@@ -43,7 +43,7 @@ nav .links .log-in {
   flex-direction: column;
   align-items: center;
 }
-input[type="email"],
+input[type="text"],
 input[type="password"],
 input[type="submit"] {
   width: calc(100% - 40px);
@@ -56,7 +56,7 @@ input[type="submit"] {
   font-size: 16px;
   outline: none;
 }
-input[type="email"]:focus,
+input[type="text"]:focus,
 input[type="password"]:focus {
   border-color: var(--main-color);
   outline: solid 1px var(--main-color);
@@ -99,6 +99,17 @@ input[type="submit"]:active {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.login-container form .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 .big-log-in-container .login-container form .have-an-account {

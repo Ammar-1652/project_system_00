@@ -13,19 +13,22 @@ from wtforms.validators import DataRequired, length, Email, EqualTo
 
 class RegistrationForm(FlaskForm):
     fname = StringField(
-        "First Name", validators=[DataRequired(), Length(min=2, max=25)]
+        "First Name", validators=[DataRequired(), length(min=2, max=25)]
     )
     mname = StringField(
-        "Middle Name", validators=[DataRequired(), Length(min=2, max=25)]
+        "Middle Name", validators=[DataRequired(), length(min=2, max=25)]
     )
-    lname = StringField("Last Name", validators=[DataRequired(), Length(min=2, max=25)])
+    lname = StringField("Last Name", validators=[DataRequired(), length(min=2, max=25)])
     username = StringField(
-        "Username", validators=[DataRequired(), Length(min=2, max=25)]
+        "Username", validators=[DataRequired(), length(min=2, max=25)]
     )
     email = StringField("Email", validators=[DataRequired(), Email()])
     contact_number = StringField(
         "Contact Number",
         validators=[DataRequired(), length(max=11, min=11)],
+    )
+    national_id = StringField(
+        "National ID", validators=[length(max=14, min=14), DataRequired()]
     )
     password = PasswordField(
         "Password",
@@ -44,7 +47,7 @@ class RegistrationForm(FlaskForm):
     level = SelectField(
         "Your Level", choices=[("level 1", "Level 1")], validators=[DataRequired()]
     )
-    dart_of_birth = DateField(
+    date_of_birth = DateField(
         "Date of Birth", validators=[DataRequired()], format=["%d-%m-%Y"]
     )
     submit = SubmitField("Sign Up")
