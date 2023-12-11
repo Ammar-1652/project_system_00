@@ -9,6 +9,7 @@ db.init_app(app)
 
 
 @app.route("/")
+@app.route("/index")
 def index():
     return render_template("index.html")
 
@@ -22,7 +23,7 @@ def about():
 def contact():
     return render_template("contact.html")
 
-
+@app.route('/login', methods=['GET', 'POST'], endpoint='log_in')
 def log_in():
     form = LoginForm()
 
@@ -82,7 +83,7 @@ def sign_up_for_students():
         db.session.commit()
 
         flash('Registration successful!', 'success')
-        return redirect(url_for('home'))  # Change 'home' to your actual home route
+        return redirect(url_for('home'))  
     return render_template("sign_up_for_students.html", form=form)
 
 @app.route("/sign_up_for_ass_prof", methods=["GET", "POST"])
