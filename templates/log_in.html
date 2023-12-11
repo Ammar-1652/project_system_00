@@ -153,3 +153,36 @@
     <!-- End Footer -->
   </body>
 </html>
+
+{% extends 'layout.html' %} {% block style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/log_in.css') }}"
+/>
+{% endblock style %} {% block content %}
+<!-- Start Log in -->
+<div class="big-log-in-container">
+  <div class="login-container">
+    <i class="fa-solid fa-circle-user"></i>
+    <h2>Log in</h2>
+
+    <form method="post">
+      <!-- {{ form.hidden_tag() }} -->
+      {{ form.email.label(for_=form.email.id, class_="visually-hidden") }} {{
+      form.email(placeholder=form.email.label.text) }}
+      <br />
+      {{ form.password.label(for_=form.password.id, class_="visually-hidden") }}
+      {{ form.password(placeholder=form.password.label.text) }}
+      <br />
+      <div class="remember-me">
+        {{ form.remember }} {{ form.remember.label }}
+      </div>
+      <div class="have-an-account">
+        <a href="{{ url_for('sign_up') }}">Create a New Account</a>
+      </div>
+      {{ form.submit }}
+    </form>
+  </div>
+</div>
+<!-- End Log in -->
+{% endblock content %}
