@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from models import db, Student, Professor, Assistant, Course, Admin, student_course
 from forms import LoginForm, RegistrationForm
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///Tables.db"
-app.config["SECRET_KEY"] = "your_secret_key"
+# app.config["SECRET_KEY"] = "your_secret_key"
 db.init_app(app)
 
 
@@ -32,16 +32,18 @@ def log_in():
         remember = form.remember.data
 
         # Check if the user exists in the students, professors, assistants, and admin tables
-        user = Student.query.filter_by(email=email, password=password).first() or \
-            Professor.query.filter_by(email=email, password=password).first() or \
-            Assistant.query.filter_by(email=email, password=password).first() or \
-            Admin.query.filter_by(username=email, password=password).first()
+        user = (
+            Student.query.filter_by(email=email, password=password).first()
+            or Professor.query.filter_by(email=email, password=password).first()
+            or Assistant.query.filter_by(email=email, password=password).first()
+            or Admin.query.filter_by(username=email, password=password).first()
+        )
 
         if user:
             login_user(user, remember=remember)
 
             if isinstance(user, Student):
-                return redirect(url_for("courses_for_student"))
+                return redirect(url_for("/courses_for_student"))
             elif isinstance(user, Professor):
                 return redirect("/professor_dashboard")
             elif isinstance(user, Assistant):
@@ -49,9 +51,10 @@ def log_in():
             elif isinstance(user, Admin) and user.isVerified:
                 return redirect("/admin_dashboard")
         else:
-            flash('Invalid email or password', 'danger')
+            flash("Invalid email or password", "danger")
 
     return render_template("log_in.html", form=form)
+
 
 @app.route("/sign_up")
 def sign_up():
@@ -75,15 +78,16 @@ def sign_up_for_students():
             password=form.password.data,
             gender=form.gender.data,
             level=form.level.data,
-            date_of_birth=form.date_of_birth.data
+            date_of_birth=form.date_of_birth.data,
         )
 
         db.session.add(student)
         db.session.commit()
 
-        flash('Registration successful!', 'success')
-        return redirect(url_for('home'))  # Change 'home' to your actual home route
+        flash("Registration successful!", "success")
+        return redirect(url_for("home"))  # Change 'home' to your actual home route
     return render_template("sign_up_for_students.html", form=form)
+
 
 @app.route("/sign_up_for_ass_prof", methods=["GET", "POST"])
 def sign_up_for_ass_prof():
@@ -102,15 +106,16 @@ def sign_up_for_ass_prof():
             password=form.password.data,
             gender=form.gender.data,
             level=form.level.data,
-            date_of_birth=form.date_of_birth.data
+            date_of_birth=form.date_of_birth.data,
         )
 
         db.session.add(assistant)
         db.session.commit()
 
-        flash('Registration successful!', 'success')
-        return redirect(url_for('home'))  # Change 'home' to your actual home route
+        flash("Registration successful!", "success")
+        return redirect(url_for("home"))  # Change 'home' to your actual home route
     return render_template("sign_up_for_ass_prof.html", form=form)
+
 
 @app.route("/sign_up_for_prof", methods=["GET", "POST"])
 def sign_up_for_prof():
@@ -129,14 +134,14 @@ def sign_up_for_prof():
             password=form.password.data,
             gender=form.gender.data,
             level=form.level.data,
-            date_of_birth=form.date_of_birth.data
+            date_of_birth=form.date_of_birth.data,
         )
 
         db.session.add(professor)
         db.session.commit()
 
-        flash('Registration successful!', 'success')
-        return redirect(url_for('home'))  # Change 'home' to your actual home route
+        flash("Registration successful!", "success")
+        return redirect(url_for("home"))  # Change 'home' to your actual home route
     return render_template("sign_up_for_students.html", form=form)
 
 

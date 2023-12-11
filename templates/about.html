@@ -1,238 +1,112 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100&display=swap"
-      rel="stylesheet"
-    />
-    <!-- CSS File -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/master.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/about.css') }}"
-    />
-    <!-- Normalize File -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/normalize.css') }}"
-    />
-    <!-- Tab Icon -->
-    <link
-      rel="shortcut icon"
-      href="{{ url_for('static', filename='imgs/logo (2).png') }}"
-      type="fci-icon"
-    />
-    <!-- Font Awesome Library -->
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/all.min.css') }}"
-    />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About Us</title>
-  </head>
-  <body>
-    <!-- Start Navbar -->
-    <nav>
-      <div class="logo">
-        <a href="{{ url_for('index') }}"
-          ><img
-            src="{{ url_for('static', filename='imgs/logo (2).png') }}"
-            alt=""
-        /></a>
-      </div>
-      <div class="links">
-        <a href="{{ url_for('index') }}" class="home">HOME</a>
-        <a href="{{ url_for('about') }}" class="about">ABOUT</a>
-        <a href="{{ url_for('contact') }}" class="contact">CONTACT</a>
-        <a href="{{ url_for('log_in') }}" class="log-in">LOG IN</a>
-        <a href="{{ url_for('sign_up') }}" class="sign-up">SIGN UP</a>
-      </div>
-    </nav>
-    <!-- End Navbar -->
+{% extends 'layout.html' %} {% block style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/about.css') }}"
+/>
+{% endblock style %} {% block content %}
+<!-- Start Intro -->
+<div class="intro-container">
+  <h2>About Us</h2>
+  <div class="vision-container">
+    <h4>College vision</h4>
+    <p>
+      The Faculty of Computers and Information at Kafr Elsheikh University seeks
+      to raise the level of education and scientific research in computers and
+      information technology to achieve excellence and innovation in scientific
+      research and community service at the local and regional levels.
+    </p>
+  </div>
+  <div class="message-container">
+    <h4>College message</h4>
+    <p>The mission of the College of Computers and Information is:</p>
+    <ul>
+      <li>
+        Building an advanced educational system that is compatible with the
+        rapid growth in the fields of computers and information.
+      </li>
+      <li>
+        Providing the student with the foundations of knowledge and scientific
+        research in the fields of computer science and information technology,
+        and developing the student’s personality to make him willing to
+        innovate, loving teamwork, and able to compete locally, regionally, and
+        globally.
+      </li>
+      <li>
+        Developing and updating curricula on an ongoing basis in line with
+        scientific progress, the requirements of the times, and the needs of the
+        labor market.
+      </li>
+      <li>
+        Developing awareness of the value of continuing education, the
+        inevitability of self-learning, and the importance of using modern
+        methods in this field.
+      </li>
+      <li>
+        Using scientific research as a means to achieve innovation in the
+        college’s fields by studying the economic, commercial and social
+        importance of the returns of scientific research.
+      </li>
+      <li>
+        Providing distinguished community service in the fields of information
+        technology.
+      </li>
+      <li>Strengthening the principles of credibility and ethics.</li>
+    </ul>
+  </div>
+  <div class="goals-container">
+    <h4>College goals</h4>
+    <p>The college seeks to achieve the following goals:</p>
+    <ol>
+      <li>
+        Conducting scientific and applied studies and research in the field of
+        computers and information, especially those that have a direct impact on
+        integrated development in society, and establishing specialized research
+        units in the various branches of computers and information.
+      </li>
+      <li>
+        Providing scientific and technical consultations and assistance to
+        bodies and entities that use computer and information technology and are
+        interested in decision-making, decision-making and support.
+      </li>
+      <li>
+        Training technical personnel in the various sectors of the state on
+        computer and information technology.
+      </li>
+      <li>
+        Spreading and deepening awareness in society with the aim of using
+        computer and information technology in the various sectors and
+        institutions of the state, and raising the efficiency of their use.
+      </li>
+      <li>
+        Organizing conferences and holding scientific meetings with the aim of
+        raising the educational level and deepening the scientific concept among
+        specialized cadres.
+      </li>
+      <li>
+        The ability to use modern skills, techniques, and information technology
+        necessary to design and build software.
+      </li>
+      <li>
+        Concluding scientific agreements with corresponding bodies and
+        institutions at the local, regional and global levels with the aim of
+        exchanging opinions and conducting research related to computer and
+        information specializations.
+      </li>
+      <li>
+        Providing and supporting means of publishing and scientific research in
+        various fields of specialization.
+      </li>
+      <li>
+        Establishing advanced specialized units in the various branches of
+        computer and information sciences.
+      </li>
+      <li>
+        Participation with specialized agencies to develop and Arabize software
+        for various systems and applications.
+      </li>
+    </ol>
+  </div>
+</div>
 
-    <!-- Start Intro -->
-    <div class="intro-container">
-      <h2>About Us</h2>
-      <div class="vision-container">
-        <h4>College vision</h4>
-        <p>
-          The Faculty of Computers and Information at Kafr Elsheikh University
-          seeks to raise the level of education and scientific research in
-          computers and information technology to achieve excellence and
-          innovation in scientific research and community service at the local
-          and regional levels.
-        </p>
-      </div>
-      <div class="message-container">
-        <h4>College message</h4>
-        <p>The mission of the College of Computers and Information is:</p>
-        <ul>
-          <li>
-            Building an advanced educational system that is compatible with the
-            rapid growth in the fields of computers and information.
-          </li>
-          <li>
-            Providing the student with the foundations of knowledge and
-            scientific research in the fields of computer science and
-            information technology, and developing the student’s personality to
-            make him willing to innovate, loving teamwork, and able to compete
-            locally, regionally, and globally.
-          </li>
-          <li>
-            Developing and updating curricula on an ongoing basis in line with
-            scientific progress, the requirements of the times, and the needs of
-            the labor market.
-          </li>
-          <li>
-            Developing awareness of the value of continuing education, the
-            inevitability of self-learning, and the importance of using modern
-            methods in this field.
-          </li>
-          <li>
-            Using scientific research as a means to achieve innovation in the
-            college’s fields by studying the economic, commercial and social
-            importance of the returns of scientific research.
-          </li>
-          <li>
-            Providing distinguished community service in the fields of
-            information technology.
-          </li>
-          <li>Strengthening the principles of credibility and ethics.</li>
-        </ul>
-      </div>
-      <div class="goals-container">
-        <h4>College goals</h4>
-        <p>The college seeks to achieve the following goals:</p>
-        <ol>
-          <li>
-            Conducting scientific and applied studies and research in the field
-            of computers and information, especially those that have a direct
-            impact on integrated development in society, and establishing
-            specialized research units in the various branches of computers and
-            information.
-          </li>
-          <li>
-            Providing scientific and technical consultations and assistance to
-            bodies and entities that use computer and information technology and
-            are interested in decision-making, decision-making and support.
-          </li>
-          <li>
-            Training technical personnel in the various sectors of the state on
-            computer and information technology.
-          </li>
-          <li>
-            Spreading and deepening awareness in society with the aim of using
-            computer and information technology in the various sectors and
-            institutions of the state, and raising the efficiency of their use.
-          </li>
-          <li>
-            Organizing conferences and holding scientific meetings with the aim
-            of raising the educational level and deepening the scientific
-            concept among specialized cadres.
-          </li>
-          <li>
-            The ability to use modern skills, techniques, and information
-            technology necessary to design and build software.
-          </li>
-          <li>
-            Concluding scientific agreements with corresponding bodies and
-            institutions at the local, regional and global levels with the aim
-            of exchanging opinions and conducting research related to computer
-            and information specializations.
-          </li>
-          <li>
-            Providing and supporting means of publishing and scientific research
-            in various fields of specialization.
-          </li>
-          <li>
-            Establishing advanced specialized units in the various branches of
-            computer and information sciences.
-          </li>
-          <li>
-            Participation with specialized agencies to develop and Arabize
-            software for various systems and applications.
-          </li>
-        </ol>
-      </div>
-    </div>
-
-    <!-- End Intro -->
-
-    <!-- Start Footer -->
-
-    <div class="footer-container">
-      <div class="footer-main-container">
-        <div class="first-column">
-          <a href="{{ url_for('index') }}"
-            ><img
-              src="{{ url_for('static', filename='imgs/logo (2).png') }}"
-              alt=""
-          /></a>
-          <p>
-            Far far away, behind the word mountains, far from the countries
-            Vokalia and Consonantia, there live the blind texts.
-          </p>
-          <div class="social-media-icons">
-            <a href="http://" target="_blank" rel="noopener noreferrer"
-              ><i class="fa-brands fa-facebook"></i
-            ></a>
-            <a href="http://" target="_blank" rel="noopener noreferrer"
-              ><i class="fa-brands fa-square-instagram"></i
-            ></a>
-            <a href="http://" target="_blank" rel="noopener noreferrer"
-              ><i class="fa-brands fa-square-x-twitter"></i
-            ></a>
-          </div>
-        </div>
-        <div class="second-column">
-          <h2>Pages</h2>
-          <div class="pages-links">
-            <a href="{{ url_for('index') }}">Home</a>
-            <a href="{{ url_for('about') }}">About</a>
-            <a href="{{ url_for('contact') }}">Contact</a>
-            <a href="{{ url_for('log_in') }}">Log In</a>
-            <a href="{{ url_for('sign_up') }}">Sign Up</a>
-          </div>
-        </div>
-        <div class="third-column">
-          <h2>Have a Questions?</h2>
-          <div class="address">
-            <i class="fa-solid fa-map"></i>
-            <p>El-Gish Street, Kafr Elsheikh, Arab Republic of Egypt.</p>
-          </div>
-          <div class="phone">
-            <i class="fa-solid fa-phone"></i>
-            <a href="tel:+201096554062">(+2) 01096554062</a>
-          </div>
-          <div class="email">
-            <i class="fa-solid fa-paper-plane"></i>
-            <a href="mailto:info@fci.kfs.edu.eg">info@fci.kfs.edu.eg</a>
-          </div>
-        </div>
-      </div>
-      <div class="sub-container">
-        <p>
-          Copyright ©2023 All rights reserved | This template is made with 🧡 by
-          <span
-            ><a
-              href="https://yousefelbilkasy.bio.link/"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Yousef Elbilkasy</a
-            ></span
-          >
-          & <span>Alaa Elhabashy</span>
-        </p>
-      </div>
-    </div>
-
-    <!-- End Footer -->
-  </body>
-</html>
+<!-- End Intro -->
+{% endblock content %}
