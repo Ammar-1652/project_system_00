@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from models import db, Student, Professor, Assistant, Course, Admin, Enrollment
+from models import db, Student, Professor, Assistant, Course, Admin, student_course
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///Tables.db"
@@ -33,11 +33,11 @@ def log_in():
         assistant = Assistant.query.filter_by(email=email, password=password).first()
         admin = Admin.query.filter_by(username=email, password=password).first()
 
-        if student:
+        if student :
             # Redirect to student dashboard
-            return redirect(url_for("/courses_for_student"))
+            return redirect(url_for("courses_for_student"))
 
-        elif professor:
+        elif professor :
             # Redirect to professor dashboard
             return redirect("/professor_dashboard")
 
@@ -45,7 +45,7 @@ def log_in():
             # Redirect to assistant dashboard
             return redirect("/assistant_dashboard")
 
-        elif admin:
+        elif admin and admin.isVerified:
             # Redirect to admin dashboard
             return redirect("/admin_dashboard")
 
@@ -53,8 +53,7 @@ def log_in():
             return "Invalid email or password"
 
     return render_template("log_in.html")
-
-
+    
 @app.route("/sign_up")
 def sign_up():
     return render_template("sign_up.html")
