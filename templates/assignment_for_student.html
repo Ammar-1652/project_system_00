@@ -228,3 +228,37 @@
     <!-- End Footer -->
   </body>
 </html>
+
+{% extends 'dashboard.html' %} {% block style %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/assignment_for_student.css') }}"
+/>
+{% endblock style %} {% block student_dashboard %}
+<!-- Start Dashboard -->
+<div class="container">
+  <div class="assignment">
+    <h1>Welcome to the Assignments Page</h1>
+    <div class="welcome-message">
+      <h2>Instructions:</h2>
+      <p>Download your assigned task below.</p>
+    </div>
+    <div class="assignment-details">
+      <a href="assignment-link" class="download-button" download
+        >Download the Task</a
+      >
+      <p class="warning">
+        <span class="warning-icon"></span>
+        <span class="warning-message"
+          >The deadline is [Specify the due date here].</span
+        >
+      </p>
+      <p>
+        If you have any questions, please contact us via email at:
+        <a href="mailto:email@example.com">email@example.com</a>
+      </p>
+    </div>
+  </div>
+</div>
+<!-- End Dashboard -->
+{% endblock student_dashboard %}

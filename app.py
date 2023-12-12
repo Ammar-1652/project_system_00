@@ -4,24 +4,26 @@ from forms import LoginForm, RegistrationForm
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///Tables.db"
-# app.config["SECRET_KEY"] = "your_secret_key"
+app.config[
+    "SECRET_KEY"
+] = "ce17b3819f5e6a9e22165a5fabfce27112187dd089f7375511b5d8729d738b24"
 db.init_app(app)
 
 
 @app.route("/")
 @app.route("/index")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", title="Home")
 
 
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    return render_template("about.html", title="About")
 
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")
+    return render_template("contact.html", title="Contact")
 
 
 @app.route("/login", methods=["GET", "POST"], endpoint="log_in")
@@ -55,12 +57,12 @@ def log_in():
         else:
             flash("Invalid email or password", "danger")
 
-    return render_template("log_in.html", form=form)
+    return render_template("log_in.html", form=form, title="Log In")
 
 
 @app.route("/sign_up")
 def sign_up():
-    return render_template("sign_up.html")
+    return render_template("sign_up.html", title="Sign Up")
 
 
 @app.route("/sign_up_for_students", methods=["GET", "POST"])
@@ -88,7 +90,9 @@ def sign_up_for_students():
 
         flash("Registration successful!", "success")
         return redirect(url_for("home"))  # Change 'home' to your actual home route
-    return render_template("sign_up_for_students.html", form=form)
+    return render_template(
+        "sign_up_for_students.html", form=form, title="Sign Up for Students"
+    )
 
 
 @app.route("/sign_up_for_ass_prof", methods=["GET", "POST"])
@@ -116,7 +120,11 @@ def sign_up_for_ass_prof():
 
         flash("Registration successful!", "success")
         return redirect(url_for("home"))  # Change 'home' to your actual home route
-    return render_template("sign_up_for_ass_prof.html", form=form)
+    return render_template(
+        "sign_up_for_ass_prof.html",
+        form=form,
+        title="Sign Up for Assistants Professors",
+    )
 
 
 @app.route("/sign_up_for_prof", methods=["GET", "POST"])
@@ -144,7 +152,9 @@ def sign_up_for_prof():
 
         flash("Registration successful!", "success")
         return redirect(url_for("home"))  # Change 'home' to your actual home route
-    return render_template("sign_up_for_students.html", form=form)
+    return render_template(
+        "sign_up_for_prof.html", form=form, title="Sign Up for Professors"
+    )
 
 
 @app.route("/dashboard", methods=["GET", "POST"])
@@ -184,13 +194,14 @@ def admin_dashboard():
         professors=professors,
         assistants=assistants,
         courses=courses,
+        title="Dashboard",
     )
 
 
 @app.route("/student_dashboard")
 def student_dashboard():
     # Add logic to display student-specific data
-    return render_template("student_dashboard.html")
+    return render_template("student_dashboard.html", title="Students Dashboard")
 
 
 @app.route("/courses_for_student")
@@ -204,7 +215,10 @@ def courses_for_student():
             student.courses
         )  # Assuming the relationship is defined correctly
         return render_template(
-            "courses_for_student.html", student=student, courses=student_courses
+            "courses_for_student.html",
+            student=student,
+            courses=student_courses,
+            title="Courses",
         )
 
     # Redirect to login if user is not logged in
@@ -214,25 +228,27 @@ def courses_for_student():
 @app.route("/timetable_for_student")
 def timetable_for_student():
     # Your view logic here
-    return render_template("timetable_for_student.html")
+    return render_template("timetable_for_student.html", title="Timetable")
 
 
 @app.route("/assignment_for_student")
 def assignment_for_student():
     # Your view logic here
-    return render_template("assignment_for_student.html")
+    return render_template("assignment_for_student.html", title="Assignment")
 
 
 @app.route("/professor_dashboard")
 def professor_dashboard():
     # Add logic to display professor-specific data
-    return render_template("professor_dashboard.html")
+    return render_template("professor_dashboard.html", title="Professor Dashboard")
 
 
 @app.route("/assistant_dashboard")
 def assistant_dashboard():
     # Add logic to display assistant-specific data
-    return render_template("ass_professor_dashboard.html")
+    return render_template(
+        "ass_professor_dashboard.html", title="Assistants Professors Dashboard"
+    )
 
 
 if __name__ == "__main__":
