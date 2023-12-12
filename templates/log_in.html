@@ -11,12 +11,11 @@
     <h2>Log in</h2>
 
     <form method="post">
-      <!-- {{ form.hidden_tag() }} -->
-      {{ form.email.label(for_=form.email.id, class_="visually-hidden") }} {{
+      {{ form.hidden_tag() }} {{ form.email.label(class="visually-hidden") }} {{
       form.email(placeholder=form.email.label.text) }}
       <br />
-      {{ form.password.label(for_=form.password.id, class_="visually-hidden") }}
-      {{ form.password(placeholder=form.password.label.text) }}
+      {{ form.password.label(class="visually-hidden") }} {{
+      form.password(placeholder=form.password.label.text) }}
       <br />
       <div class="remember-me">
         {{ form.remember }} {{ form.remember.label }}

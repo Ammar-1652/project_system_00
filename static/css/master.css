@@ -131,6 +131,14 @@ nav .links a:hover {
 nav .links a:hover::before {
   width: 100%;
 }
+
+/* .alert {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: #28a745;
+  color: #198754;
+} */
 /* End Navbar */
 
 /* Start Footer */

@@ -10,69 +10,44 @@
     <i class="fa-solid fa-chalkboard-user"></i>
     <h2>Sign Up for Assistant Professors</h2>
     <form method="post">
+      {{ form.hidden_tag() }}
       <div class="columns">
         <div class="column">
-          <input
-            type="text"
-            name="first-name"
-            placeholder="First Name"
-            required
-          /><br />
-          <input
-            type="text"
-            name="last-name"
-            placeholder="Last Name"
-            required
-          /><br />
-          <input
-            type="tel"
-            name="contact-number"
-            placeholder="Contact Number"
-            maxlength="11"
-            minlength="11"
-            required
-          /><br />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-          /><br />
-          <!-- <select name="class_level" required>
-            <option value="" disabled selected>Select Class Level</option>
-            <option value="Level 1">Level 1</option>
-            <option value="Level 2">Level 2</option>
-            <option value="Level 3">Level 3</option>
-            <option value="Level 4">Level 4</option></select
-          ><br /> -->
-          <select name="gender" required>
-            <option value="" disabled selected>Select Gender</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option></select
-          ><br />
+          {{ form.fname.label(class="visually-hidden") }} {{
+          form.fname(placeholder=form.fname.label.text) }}
+          <br />
+          {{ form.lname.label(class="visually-hidden") }} {{
+          form.lname(placeholder=form.lname.label.text) }}
+          <br />
+          {{ form.username.label( class="visually-hidden") }} {{
+          form.username(placeholder=form.username.label.text) }}
+          <br />
+          {{ form.email.label(class="visually-hidden") }} {{
+          form.email(placeholder=form.email.label.text) }}
+          <br />
+          {{ form.password.label( class="visually-hidden") }} {{
+          form.password(placeholder=form.password.label.text) }}
+          <br />
+          {{ form.confirm_password.label( class="visually-hidden") }} {{
+          form.confirm_password(placeholder=form.confirm_password.label.text) }}
+          <br />
         </div>
         <div class="column">
-          <input
-            type="text"
-            name="middle-name"
-            placeholder="Middle Name"
-            required
-          /><br />
-          <input
-            type="tel"
-            name="national-id"
-            placeholder="National ID"
-            maxlength="14"
-            minlength="14"
-            required
-          /><br />
-          <input type="email" name="email" placeholder="Email" required /><br />
-          <input
-            type="date"
-            name="date-of-birth"
-            placeholder="Date of Birth"
-            required
-          /><br />
+          {{ form.mname.label(class="visually-hidden") }} {{
+          form.mname(placeholder=form.mname.label.text) }}
+          <br />
+          {{ form.national_id.label( class="visually-hidden") }} {{
+          form.national_id(placeholder=form.national_id.label.text) }}
+          <br />
+          {{ form.contact_number.label( class="visually-hidden") }} {{
+          form.contact_number(placeholder=form.contact_number.label.text) }}
+          <br />
+          {{ form.date_of_birth.label( class="visually-hidden") }} {{
+          form.date_of_birth(placeholder=form.date_of_birth.label.text) }}
+          <br />
+          {{ form.gender.label(class="visually-hidden") }} {{
+          form.gender(placeholder=form.gender.label.text) }}
+          <br />
         </div>
       </div>
       <a href="{{ url_for('log_in') }}">Or You Are Already Have Account</a>

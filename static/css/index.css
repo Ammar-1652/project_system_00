@@ -6,6 +6,14 @@
   --forth-color: #161616; /*  */
   --fifth-color: #f8f8f8; /* Text / Icons */
   --sixth-color: #878b8b; /*  */
+  font-family: "Poppins", sans-serif;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--fifth-color);
+  height: 100vh;
 }
 /* End Global Rules */
 

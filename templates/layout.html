@@ -43,8 +43,12 @@
       rel="stylesheet"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
-    /> -->
-  </head>
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+  </head> -->
   <body>
     <!-- Start Navbar -->
     <nav>
@@ -63,6 +67,15 @@
         <a href="{{ url_for('sign_up') }}" class="sign-up">SIGN UP</a>
       </div>
     </nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert">
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
     <!-- End Navbar -->
 
     {% block content %} {% endblock content %}

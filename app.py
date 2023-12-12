@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
+from email_validator import validate_email, EmailNotValidError
 from models import db, Student, Professor, Assistant, Course, Admin, student_course
 from forms import LoginForm, RegistrationForm
 
@@ -47,12 +48,28 @@ def log_in():
             login_user(user, remember=remember)
 
             if isinstance(user, Student):
+                flash(
+                    f"Hi {form.fname.data}!, This Account Logged in Successfully",
+                    "success",
+                )
                 return redirect(url_for("/courses_for_student"))
             elif isinstance(user, Professor):
+                flash(
+                    f"Hi Dr. {form.fname.data}!, This Account Logged in Successfully",
+                    "success",
+                )
                 return redirect("/professor_dashboard")
             elif isinstance(user, Assistant):
+                flash(
+                    f"Hi Eng. {form.fname.data}!, This Account Logged in Successfully",
+                    "success",
+                )
                 return redirect("/assistant_dashboard")
             elif isinstance(user, Admin) and user.isVerified:
+                flash(
+                    f"Hi Mr. {form.fname.data}!, This Account Logged in Successfully",
+                    "success",
+                )
                 return redirect("/admin_dashboard")
         else:
             flash("Invalid email or password", "danger")
@@ -89,7 +106,7 @@ def sign_up_for_students():
         db.session.commit()
 
         flash("Registration successful!", "success")
-        return redirect(url_for("home"))  # Change 'home' to your actual home route
+        return redirect(url_for("index"))  # Change 'home' to your actual home route
     return render_template(
         "sign_up_for_students.html", form=form, title="Sign Up for Students"
     )
@@ -111,7 +128,6 @@ def sign_up_for_ass_prof():
             national_id=form.national_id.data,
             password=form.password.data,
             gender=form.gender.data,
-            level=form.level.data,
             date_of_birth=form.date_of_birth.data,
         )
 
@@ -119,7 +135,7 @@ def sign_up_for_ass_prof():
         db.session.commit()
 
         flash("Registration successful!", "success")
-        return redirect(url_for("home"))  # Change 'home' to your actual home route
+        return redirect(url_for("index"))  # Change 'home' to your actual home route
     return render_template(
         "sign_up_for_ass_prof.html",
         form=form,
@@ -151,7 +167,7 @@ def sign_up_for_prof():
         db.session.commit()
 
         flash("Registration successful!", "success")
-        return redirect(url_for("home"))  # Change 'home' to your actual home route
+        return redirect(url_for("index"))  # Change 'home' to your actual home route
     return render_template(
         "sign_up_for_prof.html", form=form, title="Sign Up for Professors"
     )
